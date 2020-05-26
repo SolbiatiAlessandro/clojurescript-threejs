@@ -4,7 +4,11 @@ An example setup for ClojureScript and three.js
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+Trying to go over the [three.js getting started](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) using ClojureScript instead of vanilla Javascript.
+
+Some similar repo:
+- https://github.com/gzmask/tetris-cljs-figwheel
+- https://github.com/thheller/shadow-cljs
 
 ## Setup
 
