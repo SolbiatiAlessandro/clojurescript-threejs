@@ -6,6 +6,14 @@ An example setup for ClojureScript and three.js
 
 Trying to go over the [three.js getting started](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) using ClojureScript instead of vanilla Javascript.
 
+To set up three.js you need to 
+1. download the three.js library and put it somewhere in the project
+2. edit project.clj adding
+```
+:foreign-libs [{:file "resources/public/js/three.min.js"  :provides ["three"]}
+:externs ["resources/public/js/three.ext.js"]
+```
+
 Some similar repo:
 - https://github.com/gzmask/tetris-cljs-figwheel
 - https://github.com/thheller/shadow-cljs
