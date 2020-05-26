@@ -34,8 +34,6 @@
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/out/index.js"
                            :output-dir "resources/public/js/compiled/out"
-                           :foreign-libs {:file "resources/public/js/three.min.js"
-                                          :provides ["three"]}
                            :bundle-cmd {:none ["npx" "webpack" "--mode=development"]
                                         :default ["npx" "webpack"]}
                            :source-map-timestamp true
@@ -49,10 +47,7 @@
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/cljs_three_figwheel.js"
                            :main cljs-three-figwheel.core
-                           :foreign-libs {:file "resources/public/js/three.min.js"
-                                          :provides ["three"]}
                            :optimizations :advanced
-                           :externs ["resources/public/js/three.ext.js"]
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"

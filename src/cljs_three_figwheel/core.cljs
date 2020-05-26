@@ -3,21 +3,39 @@
 
 (enable-console-print!)
 
-(println "This text is printed from src/cljs-three-figwheel/core.cljs. Go ahead and edit it and see reloading in action. Here now")
-
 ;; define your app data so that it doesn't get over-written on reload
 
 (defonce app-state (atom {:text "Hello world!"}))
 
-(defn title []
-  "Alex")
-
-(defn ss[]
-  "asd")
-
-(defn ss []
-  "adasd"
+(defn startup-app
+  []
+  ( let [scene (js/THREE.Scene.)
+          camera (js/THREE.PerspectiveCamera. 75
+                                              (/ (.-innerWidth js/window) (.-innerHeight js/window))
+                                              0.1
+                                              1000)
+          renderer (js/THREE.WebGLRenderer.)
+          geometry (js/THREE.BoxGeometry. )
+          material (js/THREE.MeshBasicMaterial.
+                     (clj->js {:color 0x00ff00})
+                     )
+          cube (js/THREE.Mesh. geometry material)
+          render (fn animate []
+                (js/requestAnimationFrame animate)
+                 (set! (.-x (.-rotation cube))  (+ 0.01 (.-x (.-rotation cube))) )
+                 (set! (.-y (.-rotation cube))  (+ 0.02 (.-y (.-rotation cube))) )
+                (.render renderer scene camera)
+                   )
+         ]
+      (.setSize renderer (.-innerWidth js/window) (.-innerHeight js/window))
+      (.appendChild (.-body js/document) (.-domElement renderer))
+      (.add scene cube)
+      (set! (.-z (.-position camera))  5)
+      (render)
+    )
   )
+
+(startup-app)
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
